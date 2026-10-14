@@ -1,0 +1,41 @@
+rtl-channelizer stage 1 report (bit-accurate model vs truth)
+
+S1: PASS  match 204/204  miss 0  extra(false/dup) 0  field-fail 0  | not_owned 206 glitch 210 internal_ovf 0
+    pulses 204 (expected detect 204), PDWs 204, output saturations 0
+    TOA err +0..+0 mean +0.00 | PW err +1..+1 mean +1.00
+    FREQ |err| max 1.126 mean 0.572 kHz (n=125)
+    PA(window) |err| max 121 mean 38.0 LSB (n=125)
+    PA(peak)   |err| max 1001 mean 673.1 LSB (n=79)
+    frames 204, stream signature 0x3356
+S2: PASS  match 42/42  miss 0  extra(false/dup) 0  field-fail 0  | not_owned 39 glitch 148 internal_ovf 0
+    pulses 42 (expected detect 42), PDWs 42, output saturations 0
+    TOA err +0..+0 mean +0.00 | PW err +1..+3 mean +1.31
+    FREQ |err| max 1.425 mean 0.536 kHz (n=24)
+    PA(window) |err| max 99 mean 39.2 LSB (n=24)
+    PA(peak)   |err| max 2300 mean 784.2 LSB (n=18)
+    frames 42, stream signature 0xFE8A
+S3: PASS  match 9/9  miss 0  extra(false/dup) 0  field-fail 0  | not_owned 9 glitch 34 internal_ovf 0
+    pulses 10 (expected detect 9), PDWs 9, output saturations 0
+    TOA err +0..+1 mean +0.11 | PW err -1..+1 mean +0.78
+    FREQ |err| max 0.859 mean 0.479 kHz (n=4)
+    PA(window) |err| max 70 mean 37.3 LSB (n=3)
+    PA(peak)   |err| max 564 mean 491.4 LSB (n=5)
+    frames 9, stream signature 0x41C7
+S4: PASS  match 31/31  miss 0  extra(false/dup) 0  field-fail 0  | not_owned 11 glitch 0 internal_ovf 0
+    pulses 31 (expected detect 31), PDWs 31, output saturations 0
+    TOA err +1..+1 mean +1.00 | PW err -1..+0 mean -0.23
+    FREQ |err| max 3.483 mean 1.355 kHz (n=31)
+    PA(window) |err| max 259 mean 110.2 LSB (n=31)
+    frames 31, stream signature 0x0ADC
+S5: PASS  match 624/624  miss 0  extra(false/dup) 0  field-fail 0  | not_owned 279 glitch 365 internal_ovf 0
+    pulses 624 (expected detect 624), PDWs 624, output saturations 0
+    TOA err +0..+1 mean +0.40 | PW err +0..+1 mean +0.50
+    FREQ |err| max 1.533 mean 0.467 kHz (n=624)
+    PA(window) |err| max 109 mean 22.1 LSB (n=624)
+    frames 624, stream signature 0x9491
+
+T1 tone sweep (bit model): PASS
+    passband (|off| <= 0.5 ch) ripple 0.073 dB (-0.072 .. 0.001)
+    1.0 ch away: max -41.7 dB   >= 1.5 ch away: max -81.3 dB   internal_ovf 0
+
+ALL: PASS

@@ -1,0 +1,31 @@
+rtl-channelizer stage 1 analysis
+
+A1 polyphase+FFT vs definition: max rel err 2.13e-14  PASS
+
+A2 S1 fixed vs float (per I/Q component): err RMS 0.646 LSB, max 2.17 LSB (limit 3.82 = channel noise 38.2 LSB -20 dB)
+A2 S2 fixed vs float (per I/Q component): err RMS 0.644 LSB, max 2.16 LSB (limit 3.82 = channel noise 38.2 LSB -20 dB)
+A2 S3 fixed vs float (per I/Q component): err RMS 0.647 LSB, max 2.22 LSB (limit 3.82 = channel noise 38.2 LSB -20 dB)
+A2 S4 fixed vs float (per I/Q component): err RMS 0.645 LSB, max 2.13 LSB (limit 15.30 = channel noise 153.0 LSB -20 dB)  PASS
+
+A3 noise reduction per channel: mean 10.67 dB (min 10.60, max 10.74 over 16 ch)  PASS
+
+A4 critical (16 MSPS, 256 taps, 1 MHz spacing) vs 2x oversampled (8 MSPS, 128 taps, 500 kHz spacing)
+    tone offset from ch3 | critical ch3 / ch4                  | 2x ch3 / ch4
+    +0.30 ch             |   -0.0 dB  +300k       /  -75.8 dB  +300k WRONG |   -0.0 dB  +150k       /   -3.5 dB  -350k      
+    +0.45 ch             |   -1.6 dB  +450k       /  -15.3 dB  +450k WRONG |   -0.0 dB  +225k       /   -0.3 dB  -275k      
+    +0.55 ch             |  -15.3 dB  -450k WRONG /   -1.6 dB  -450k       |   -0.3 dB  +275k       /   -0.0 dB  -225k      
+
+A5 simultaneous two-signal separation (7 positions each, equal amp 0.35 / unequal 0.20+0.45)
+    sep [ch] (kHz) | long PW 25: hit/exp extra | short PW 6: hit/exp extra | long unequal | short unequal
+    1.00 ( 500)    | 14/14   0               |  7/14   0                | 13/14   0     |  7/14   0
+    1.25 ( 625)    | 14/14   0               |  7/14   2                | 14/14   0     |  7/14   0
+    1.50 ( 750)    | 14/14   0               | 12/14   1                | 14/14   1     |  7/14   0
+    1.75 ( 875)    | 14/14   0               | 12/14   1                | 14/14   0     | 10/14   0
+    2.00 (1000)    | 14/14   0               | 14/14   0                | 14/14   0     | 12/14   0
+    2.25 (1125)    | 14/14   0               | 14/14   0                | 14/14   0     | 14/14   0
+    2.50 (1250)    | 14/14   0               | 14/14   0                | 14/14   0     | 14/14   0
+
+A6 S4 wideband reference (same detector on raw 8 MSPS |x|): PDWs 36, pulses hit 31/31, false PDWs 5
+    (channelized S4: 31/31 hit, 0 false - see report_stage1.txt)
+
+ANALYSIS: PASS
